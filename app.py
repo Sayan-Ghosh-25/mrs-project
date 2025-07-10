@@ -3,18 +3,14 @@ import requests
 import streamlit as st
 import pandas as pd
 import pickle
-
+import gdown
 # ─── Download Helper ────────────────────────────────────────────────────────────
 def download_if_missing(url: str, filename: str):
-    """Download `filename` from `url` if not already present on disk."""
+    """Download `filename` from Google Drive `url` if not already present."""
     if not os.path.exists(filename):
         with st.spinner(f"Downloading {filename}..."):
-            resp = requests.get(url, stream=True)
-            resp.raise_for_status()
-            with open(filename, "wb") as f:
-                for chunk in resp.iter_content(chunk_size=8192):
-                    if chunk:
-                        f.write(chunk)
+            gdown.download(url, output=filename, quiet=False, fuzzy=True)
+
 
 # ─── Google Drive Direct-Download URLs ────────────────────────────────────────
 MOVIES_URL     = "https://drive.google.com/uc?export=download&id=1Bze3ZvzvedPYg_Yk--8tr_hSJUrJzT29"
