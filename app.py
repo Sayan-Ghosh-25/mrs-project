@@ -52,7 +52,7 @@ def fetch_imdb_link(movie_id: int) -> str:
     return f"https://www.imdb.com/title/{imdb}/" if imdb else "#"
 
 # ─── Suggest & Recommend Logic ────────────────────────────────────────────────
-def get_suggestions(query: str, titles: pd.Series, limit: int = 4):
+def get_suggestions(query: str, titles: pd.Series, limit: int = 6):
     q = query.strip().lower()
     return [t for t in titles if q in t.lower()][:limit]
 
