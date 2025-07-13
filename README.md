@@ -3,8 +3,7 @@
 Welcome to your **Personalized Movie Recommendation System**!  
 This web app suggests movies similar to your selected favorite, using content-based filtering and cosine similarity.
 
-🔗 **Live App**: [Click Here To Try It Out](https://movies-recommendation-sg25.streamlit.app)  
-📦 **GitHub Repo**: [Check Out](https://github.com/Sayan-Ghosh-25/mrs-project.git)
+🔗 **Live App**: [Click Here To Try It Out](https://movies-recommendation-sg25.streamlit.app)
 
 ---
 
