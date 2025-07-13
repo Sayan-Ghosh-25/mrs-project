@@ -4,7 +4,8 @@ import streamlit as st
 import pandas as pd
 import pickle
 import gdown
-# ─── Download Helper ────────────────────────────────────────────────────────────
+
+# ─── Download Helper ───
 def download_if_missing(url: str, filename: str):
     """Download `filename` from Google Drive `url` if not already present."""
     if not os.path.exists(filename):
@@ -12,15 +13,15 @@ def download_if_missing(url: str, filename: str):
             gdown.download(url, output=filename, quiet=False, fuzzy=True)
 
 
-# ─── Google Drive Direct-Download URLs ────────────────────────────────────────
+# ─── Google Drive Direct-Download URLs ───
 MOVIES_URL     = "https://drive.google.com/uc?export=download&id=1Bze3ZvzvedPYg_Yk--8tr_hSJUrJzT29"
 SIMILARITY_URL = "https://drive.google.com/uc?export=download&id=13AQel0rbUjkW-UU-q9YawRUQ2BaRFRnH"
 
-# ─── Ensure Pickles Are Present ────────────────────────────────────────────────
+# ─── Ensure Pickles Are Present ───
 download_if_missing(MOVIES_URL, "Movies.pkl")
 download_if_missing(SIMILARITY_URL, "Similarity.pkl")
 
-# ─── Load Data ────────────────────────────────────────────────────────────────
+# ─── Load Data ───
 @st.cache_data
 def load_movies():
     with open("Movies.pkl", "rb") as f:
@@ -35,7 +36,7 @@ def load_similarity():
 movies     = load_movies()
 similarity = load_similarity()
 
-# ─── TMDB Poster & IMDb Link Fetchers ─────────────────────────────────────────
+# ─── TMDB Poster & IMDb Link Fetchers ────
 def fetch_poster(movie_id: int) -> str:
     """Fetch poster URL from TMDB API."""
     url = f"https://api.themoviedb.org/3/movie/{movie_id}"
@@ -51,7 +52,7 @@ def fetch_imdb_link(movie_id: int) -> str:
     imdb   = data.get("imdb_id","")
     return f"https://www.imdb.com/title/{imdb}/" if imdb else "#"
 
-# ─── Suggest & Recommend Logic ────────────────────────────────────────────────
+# ─── Suggestion & Recommendation Logic ───
 def get_suggestions(query: str, titles: pd.Series, limit: int = 6):
     q = query.strip().lower()
     return [t for t in titles if q in t.lower()][:limit]
@@ -68,7 +69,7 @@ def recommend(selected_title: str, movies_df: pd.DataFrame, sim_mat):
             links.append(fetch_imdb_link(row.id))
     return names, posters, links
 
-# ─── Streamlit UI ─────────────────────────────────────────────────────────────
+# ─── Streamlit UI ───
 st.title('🎬 Your Personalised Movie Recommender')
 st.markdown("**Search for a movie to get similar**")
 
@@ -77,21 +78,21 @@ search_query = st.text_input(
     placeholder="Type the movie name…"
 )
 
-# Live suggestions
+# ─── Live suggestions ───
 suggestions = get_suggestions(search_query, movies['title']) if search_query else []
 selected_movie = st.selectbox('Did you mean…?', suggestions) if suggestions else None
 
 if st.button('Show Recommendations') and selected_movie:
     names, posters, links = recommend(selected_movie, movies, similarity)
 
-    # First row
+    # First Row With 5 First Columns
     cols = st.columns(5)
     for i, col in enumerate(cols):
         with col:
             st.markdown(f"[{names[i]}]({links[i]})", unsafe_allow_html=True)
             st.image(posters[i])
 
-    # Second row
+    # Second Row 5 Last Columns
     cols = st.columns(5)
     for i, col in enumerate(cols, start=5):
         with col:
