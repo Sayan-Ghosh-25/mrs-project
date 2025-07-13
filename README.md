@@ -11,9 +11,10 @@ This web app suggests movies similar to your selected favorite, using content-ba
 
 ### 🔍 Search Page
 ![Search Preview](https://github.com/Sayan-Ghosh-25/mrs-project/blob/main/assets/Preview-1.png?raw=true)
+![Search Preview](https://github.com/Sayan-Ghosh-25/mrs-project/blob/main/assets/Preview-2.png?raw=true)
 
 ### 🎯 Recommendations Page
-![Recommendations Preview](https://github.com/Sayan-Ghosh-25/mrs-project/blob/main/assets/Preview-2.png?raw=true)
+![Recommendations Preview](https://github.com/Sayan-Ghosh-25/mrs-project/blob/main/assets/Preview-3.png?raw=true)
 
 ---
 
