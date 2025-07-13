@@ -56,7 +56,8 @@ MRS Project/
 │   └── config.toml        # Streamlit Cloud Settings
 ├── assets/                # Preview Image Folder
 │   ├── Preview-1.png
-│   └── Preview-2.png
+    ├── Preview-2.png
+│   └── Preview-3.png
 ├── app.py                 # Main Application Logic
 ├── requirements.txt       # Python Dependencies
 └── README.md              # You Are Here!
