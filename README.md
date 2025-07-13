@@ -7,6 +7,16 @@ This web app suggests movies similar to your selected favorite, using content-ba
 
 ---
 
+## 📸 Preview
+
+### 🔍 Search Page
+![Search Preview](https://github.com/Sayan-Ghosh-25/mrs-project/blob/main/assets/Preview-1.png?raw=true)
+
+### 🎯 Recommendations Page
+![Recommendations Preview](https://github.com/Sayan-Ghosh-25/mrs-project/blob/main/assets/Preview-2.png?raw=true)
+
+---
+
 ## 🚀 Features
 
 - 🔍 Type any movie name & select the movie from a dropdown list of 4800+ titles.
@@ -36,6 +46,23 @@ This web app suggests movies similar to your selected favorite, using content-ba
 
 ---
 
+## 🛠️ Project Structure
+
+```
+MRS Project/ 
+│
+├── .streamlit/
+│   └── config.toml        # Streamlit Cloud Settings
+├── assets/                # Preview Image Folder
+│   ├── Preview-1.png
+│   └── Preview-2.png
+├── app.py                 # Main Application Logic
+├── requirements.txt       # Python Dependencies
+└── README.md              # You Are Here!
+```
+
+---
+
 ## 🧾 License
 
 This project is for educational/demo purposes.  
@@ -48,3 +75,9 @@ Data sourced from [TMDB](https://www.themoviedb.org/), used under their API term
 **Sayan Ghosh**  
 Feel Free To Connect Me On [LinkedIn](https://www.linkedin.com/in/sayan-ghosh25) or Contribute To This Project 😎
 
+---
+
+## ⭐ Acknowledgement
+
+- Special thanks to the Streamlit community for simplifying ML UI development.
+- Inspired by real-world salary prediction use-cases.
